@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laboratório de Fichas — Ordem Paranormal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0c12;
+      --text: #e9e9f2;
+      --text-soft: #a9a9c5;
+      --accent: #8b5cff;
+      --accent-dark: #5a3ab8;
+      --accent-soft: #b08fff;
+      --glass: rgba(18, 16, 38, 0.42);
+      --border: rgba(139, 92, 255, 0.14);
+      --glow: rgba(139, 92, 255, 0.18);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.68;
+      min-height: 100vh;
+    }
+
+    .bg-image {
+      position: fixed;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+      filter: brightness(0.35) contrast(1.15) saturate(0.75);
+      z-index: -2;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(11,12,18,0.78) 0%, rgba(11,12,18,0.92) 70%, rgba(11,12,18,1) 100%);
+      z-index: -1;
+    }
+
+    main { position: relative; z-index: 1; }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header.hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 0 4rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(4.2rem, 10vw, 8.4rem);
+      letter-spacing: -0.03em;
+      line-height: 0.88;
+      background: linear-gradient(90deg, #d4c3ff, #b08fff, #d4c3ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+      color: var(--accent-soft);
+      font-weight: 400;
+      margin: 1rem 0 2.2rem;
+    }
+
+    .hero-lead {
+      font-size: 1.28rem;
+      color: var(--text-soft);
+      max-width: 720px;
+      margin: 0 auto 3rem;
+      opacity: 0.9;
+    }
+
+    .cta-primary {
+      display: inline-block;
+      padding: 1.15rem 3.2rem;
+      font-size: 1.22rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 40px var(--glow);
+      transition: all 0.42s ease;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 60px rgba(139,92,255,0.38);
+      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+    }
+
+    section {
+      padding: 7rem 0 5rem;
+    }
+
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      color: var(--accent-soft);
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    h2.section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.4rem;
+    }
+
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2.2rem;
+      backdrop-filter: blur(14px);
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(139,92,255,0.32);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--accent-soft);
+      margin-bottom: 1rem;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      margin: 3rem 0;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+
+    .timeline-content {
+      width: 45%;
+      background: var(--glass);
+      padding: 1.6rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .timeline-dot {
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    details.faq-item {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 1.2rem;
+      padding: 1.4rem 1.8rem;
+      backdrop-filter: blur(10px);
+    }
+
+    summary {
+      font-weight: 500;
+      color: var(--accent-soft);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .examples-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    .gallery-item {
+      height: 380px;
+      background: var(--glass);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: all 0.5s ease;
+    }
+
+    .gallery-item:hover img { opacity: 1; transform: scale(1.04); }
+
+    footer {
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+      opacity: 0.75;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: clamp(3.6rem, 12vw, 6rem); }
+      .hero { padding: 4rem 0 3rem; min-height: 80vh; }
+      .timeline::before { left: 30px; }
+      .timeline-item { flex-direction: column !important; }
+      .timeline-content { width: 100%; margin: 1.5rem 0; }
+      .timeline-dot { left: 30px; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+<div class="bg-overlay"></div>
+
+<main class="container">
+
+  <header class="hero">
+    <h1>Laboratório de Fichas</h1>
+    <div class="hero-subtitle">Ordem Paranormal</div>
+    <p class="hero-lead">
+      Uma ferramenta criada com cuidado para quem vive entre a realidade e o Outro Lado.<br>
+      Gere fichas completas — origem, classe, atributos, status, perícias e poderes — em poucos minutos.
+    </p>
+    <a href="criador.html" class="cta-primary">Criar meu agente agora</a>
+  </header>
+
+  <section>
+    <h2 class="section-title">Por que esta ferramenta existe</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Entrada suave no sistema</h3>
+        <p>Não é preciso decorar tabelas ou fórmulas. Tudo é calculado em tempo real: vida, esforço, sanidade, determinação, pontos extras por NEX.</p>
+      </div>
+      <div class="card">
+        <h3>Fidelidade às regras oficiais</h3>
+        <p>Respeita 100% o sistema da Jambô Editora — incluindo limitações da classe Sobrevivente, bônus passivos de origem e progressão realista.</p>
+      </div>
+      <div class="card">
+        <h3>Feita para mesas reais</h3>
+        <p>Ideal para mestres que querem agilizar a criação de NPCs e para jogadores que desejam testar conceitos antes da sessão.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: rgba(15,13,30,0.3);">
+    <h2 class="section-title">Como tudo funciona</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>1. Escolha sua Origem</h3>
+          <p>Mais de 40 origens oficiais com perícias, equipamento sugerido e poder único. Detalhes aparecem instantaneamente.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>2. Defina Classe e Atributos</h3>
+          <p>Combatente, Especialista, Ocultista ou Sobrevivente. Distribua pontos com visualização clara de limites e bônus por NEX.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>3. Veja Status & Perícias</h3>
+          <p>Cálculo automático de PV, PE, Sanidade e PD. Perícias treinadas pela origem são marcadas visualmente.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>4. Ative Poderes</h3>
+          <p>Interface dedicada para poderes de origem — com ativação, custo e efeitos descritos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div style="max-width: 820px; margin: 0 auto;">
+      <details class="faq-item">
+        <summary>Posso usar sem ter o livro básico?</summary>
+        <p>Sim. A ferramenta explica tudo o que você precisa saber para criar a ficha. Mas para mestrar ou jogar, o livro oficial é recomendado.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Funciona no celular?</summary>
+        <p>Sim, o layout é totalmente responsivo. Os botões de + / – e os selects funcionam bem em touch.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso salvar ou exportar a ficha?</summary>
+        <p>Atualmente copie o texto gerado no campo final. Exportar como PDF/JSON está planejado para próximas versões.</p>
+      </details>
+      <details class="faq-item">
+        <summary>É gratuito?</summary>
+        <p>100% gratuito e open-source. Feito como projeto de TCC para ajudar a comunidade brasileira de RPG.</p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Exemplos de fichas criadas</h2>
+    <div class="examples-gallery">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=800" alt="Ficha exemplo 1"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=800" alt="Ficha exemplo 2"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=800" alt="Ficha exemplo 3"></div>
+    </div>
+  </section>
+
+  <section style="text-align:center; padding: 8rem 0 6rem;">
+    <h2 class="section-title" style="font-size: 3.6rem;">Pronto para cruzar a membrana?</h2>
+    <a href="criador.html" class="cta-primary" style="font-size: 1.4rem; padding: 1.3rem 4rem;">
+      Iniciar criação de agente
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  Projeto de Conclusão de Curso — Luiz Felipe & Pedro Cortez • 2026<br>
+  Inspirado no universo Ordem Paranormal criado por Cellbit • Sistema oficial Jambô Editora<br>
+  Código aberto no GitHub • Feito com cuidado para a comunidade brasileira de RPG
+</footer>
+
+</body>
+</html>
