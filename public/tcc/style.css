@@ -187,7 +187,7 @@ main {
 }
 
 /* ── Inputs & Selects ── */
-input, select {
+input, select, textarea {
   background: var(--bg-input);
   color: var(--text);
   border: 1px solid var(--border);
@@ -196,6 +196,27 @@ input, select {
   font-family: var(--font-body);
   font-size: 0.9rem;
   transition: border-color 0.2s;
+}
+
+select option {
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+.classe-opcao input[type="radio"]:checked ~ .classe-nome {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.classe-opcao:has(input[type="radio"]:checked) {
+  background: var(--accent-subtle);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(124, 92, 252, 0.15);
 }
 
 input:focus, select:focus {
