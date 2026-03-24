@@ -1841,6 +1841,248 @@ input[type="radio"]:not([name="classe"]) {
   .modal-tabs .tab-btn { min-width: 80px; font-size: 0.8rem; }
 }
 
+/* ══════════════════════════════════════════════════════
+   RITUAIS
+   ══════════════════════════════════════════════════════ */
+
+.rituais-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.filtro-grupo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.filtro-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-right: 0.25rem;
+}
+
+.filtro-circulo-btn,
+.filtro-elemento-btn {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.78rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.filtro-circulo-btn.active,
+.filtro-circulo-btn:hover,
+.filtro-elemento-btn.active,
+.filtro-elemento-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.rituais-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ritual-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  transition: all 0.2s;
+}
+
+.ritual-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow);
+}
+
+.ritual-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ritual-elemento-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+}
+
+.ritual-circulo-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  margin-left: 0.4rem;
+}
+
+.ritual-custo-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--yellow);
+  background: var(--yellow-subtle);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+}
+
+.ritual-nome {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  color: var(--text);
+}
+
+.ritual-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ritual-stats span {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--bg-input);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.ritual-descricao {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.ritual-formas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ritual-forma {
+  padding: 0.6rem;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.ritual-forma[data-forma="discente"] {
+  background: var(--blue-subtle);
+  border-left: 3px solid var(--blue);
+}
+
+.ritual-forma[data-forma="verdadeiro"] {
+  background: var(--purple-subtle);
+  border-left: 3px solid var(--purple);
+}
+
+.forma-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.forma-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.forma-badge.discente {
+  background: var(--blue);
+  color: #fff;
+}
+
+.forma-badge.verdadeiro {
+  background: var(--purple);
+  color: #fff;
+}
+
+.forma-custo {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+.forma-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ritual-modos {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem;
+  background: var(--bg-input);
+  border-radius: 6px;
+}
+
+.ritual-modo {
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  background: var(--bg-elevated);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+}
+
+.ritual-modo strong {
+  font-size: 0.88rem;
+  color: var(--accent);
+}
+
+.ritual-modo p {
+  margin: 0.2rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.ritual-acoes {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-ritual-acao {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-ritual-acao:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

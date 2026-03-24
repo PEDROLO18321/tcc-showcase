@@ -401,6 +401,91 @@
         </div>
     </div>
 
+    <!-- ====================== 9. HABILIDADES (RITUAIS) ====================== -->
+    <section class="card" id="secao-rituais">
+        <h2>9. Habilidades — Rituais</h2>
+
+        <div class="rituais-filtros">
+            <div class="filtro-grupo">
+                <span class="filtro-label">Círculo:</span>
+                <button class="filtro-circulo-btn active" data-circulo="todos" onclick="filtrarRituaisPorCirculo('todos')">Todos</button>
+                <button class="filtro-circulo-btn" data-circulo="1" onclick="filtrarRituaisPorCirculo('1')">1º</button>
+                <button class="filtro-circulo-btn" data-circulo="2" onclick="filtrarRituaisPorCirculo('2')">2º</button>
+                <button class="filtro-circulo-btn" data-circulo="3" onclick="filtrarRituaisPorCirculo('3')">3º</button>
+                <button class="filtro-circulo-btn" data-circulo="4" onclick="filtrarRituaisPorCirculo('4')">4º</button>
+            </div>
+            <div class="filtro-grupo">
+                <span class="filtro-label">Elemento:</span>
+                <button class="filtro-elemento-btn active" data-elemento="todos" onclick="filtrarRituaisPorElemento('todos')">Todos</button>
+                <button class="filtro-elemento-btn" data-elemento="Conhecimento" onclick="filtrarRituaisPorElemento('Conhecimento')">🧠</button>
+                <button class="filtro-elemento-btn" data-elemento="Energia" onclick="filtrarRituaisPorElemento('Energia')">⚡</button>
+                <button class="filtro-elemento-btn" data-elemento="Morte" onclick="filtrarRituaisPorElemento('Morte')">💀</button>
+                <button class="filtro-elemento-btn" data-elemento="Sangue" onclick="filtrarRituaisPorElemento('Sangue')">🩸</button>
+                <button class="filtro-elemento-btn" data-elemento="Medo" onclick="filtrarRituaisPorElemento('Medo')">👁</button>
+            </div>
+        </div>
+
+        <div style="display:flex; gap:12px; margin:20px 0;">
+            <button onclick="abrirModalAdicionarRituais()" class="btn-adicionar-itens" style="flex:1;">
+                + Adicionar Rituais do Livro
+            </button>
+            <button onclick="abrirModalCriarRitual()" class="btn-criar-item" style="flex:1;">
+                + Criar Ritual Personalizado
+            </button>
+        </div>
+
+        <div id="rituais-lista" class="rituais-grid"></div>
+    </section>
+
+    <!-- ====================== MODAL ADICIONAR RITUAIS ====================== -->
+    <div id="modal-adicionar-rituais" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adicionar Rituais</h3>
+                <button onclick="fecharModalAdicionarRituais()" class="btn-fechar-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+                    <button class="filtro-circulo-btn active" data-circulo="1" onclick="mudarCirculoModal(1)">1º Círculo</button>
+                    <button class="filtro-circulo-btn" data-circulo="2" onclick="mudarCirculoModal(2)">2º Círculo</button>
+                    <button class="filtro-circulo-btn" data-circulo="3" onclick="mudarCirculoModal(3)">3º Círculo</button>
+                    <button class="filtro-circulo-btn" data-circulo="4" onclick="mudarCirculoModal(4)">4º Círculo</button>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+                    <button class="filtro-elemento-btn active" data-elemento="todos" onclick="mudarElementoModalRitual('todos')">Todos</button>
+                    <button class="filtro-elemento-btn" data-elemento="Conhecimento" onclick="mudarElementoModalRitual('Conhecimento')">🧠 Conhecimento</button>
+                    <button class="filtro-elemento-btn" data-elemento="Energia" onclick="mudarElementoModalRitual('Energia')">⚡ Energia</button>
+                    <button class="filtro-elemento-btn" data-elemento="Morte" onclick="mudarElementoModalRitual('Morte')">💀 Morte</button>
+                    <button class="filtro-elemento-btn" data-elemento="Sangue" onclick="mudarElementoModalRitual('Sangue')">🩸 Sangue</button>
+                    <button class="filtro-elemento-btn" data-elemento="Medo" onclick="mudarElementoModalRitual('Medo')">👁 Medo</button>
+                </div>
+                <input type="text" id="busca-ritual-modal" placeholder="🔍 Buscar ritual..." 
+                    oninput="filtrarRituaisModal()" class="busca-modal">
+                <div id="modal-rituais-conteudo" class="itens-grid" style="max-height:380px; overflow-y:auto;"></div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="fecharModalAdicionarRituais()" class="btn-cancelar">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================== MODAL CRIAR RITUAL PERSONALIZADO ====================== -->
+    <div id="modal-criar-ritual" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 720px;">
+            <div class="modal-header">
+                <h3>Criar Ritual Personalizado</h3>
+                <button onclick="fecharModalCriarRitual()" class="btn-fechar-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="form-criar-ritual-conteudo"></div>
+            </div>
+            <div class="modal-footer" style="padding:20px; text-align:right;">
+                <button onclick="fecharModalCriarRitual()" class="btn-cancelar">Cancelar</button>
+                <button onclick="criarRitualPersonalizado()" class="btn-confirmar" style="margin-left:10px;">✅ Salvar Ritual</button>
+            </div>
+        </div>
+    </div>
+
 </main>
 
 <script src="theme.js"></script>
@@ -412,8 +497,10 @@
 <script src="status.js"></script>
 <script src="pericias.js"></script>
 <script src="main.js"></script>
-<script src="inventario-data.js"></script>   <!-- antes do ui -->
-<script src="inventario-ui.js"></script>     <!-- depois do data -->
+<script src="inventario-data.js"></script>
+<script src="inventario-ui.js"></script>
+<script src="rituais-data.js"></script>
+<script src="rituais-ui.js"></script>
 
 </body>
 </html>
