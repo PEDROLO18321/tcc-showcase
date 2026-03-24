@@ -30,7 +30,6 @@
       --border: rgba(255, 255, 255, 0.06);
       --shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
       --toggle-bg: #1e1e2e;
-      --toggle-icon: "🌙";
     }
 
     [data-theme="light"] {
@@ -45,7 +44,6 @@
       --border: rgba(0, 0, 0, 0.07);
       --shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
       --toggle-bg: #e8e8ee;
-      --toggle-icon: "☀️";
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -62,9 +60,7 @@
     /* ── Navigation ── */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 1rem 2rem;
       display: flex;
@@ -85,15 +81,10 @@
       letter-spacing: -0.02em;
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
 
     .theme-toggle {
-      width: 44px;
-      height: 26px;
+      width: 44px; height: 26px;
       border-radius: 13px;
       background: var(--toggle-bg);
       border: 1px solid var(--border);
@@ -105,18 +96,14 @@
     .theme-toggle::after {
       content: '';
       position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 18px;
-      height: 18px;
+      top: 3px; left: 3px;
+      width: 18px; height: 18px;
       border-radius: 50%;
       background: var(--accent);
       transition: transform var(--transition);
     }
 
-    [data-theme="light"] .theme-toggle::after {
-      transform: translateX(18px);
-    }
+    [data-theme="light"] .theme-toggle::after { transform: translateX(18px); }
 
     .nav-cta {
       padding: 0.55rem 1.4rem;
@@ -129,17 +116,9 @@
       transition: background var(--transition), transform 0.2s;
     }
 
-    .nav-cta:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
+    .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
-    /* ── Container ── */
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
 
     /* ── Hero ── */
     .hero {
@@ -149,7 +128,22 @@
       justify-content: center;
       text-align: center;
       padding: 8rem 0 5rem;
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('img/hero-bg.jpg') center/cover no-repeat;
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    [data-theme="light"] .hero::before { opacity: 0.1; }
+
+    .hero > * { position: relative; z-index: 1; }
 
     .hero-tag {
       display: inline-block;
@@ -179,27 +173,13 @@
       line-height: 1.75;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      font-family: var(--font-body);
-      background: var(--accent);
-      color: #fff;
-      border-radius: 10px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2.2rem; font-size: 1rem; font-weight: 500;
+      font-family: var(--font-body); background: var(--accent); color: #fff;
+      border-radius: 10px; text-decoration: none; border: none; cursor: pointer;
       transition: background var(--transition), transform 0.2s, box-shadow 0.2s;
     }
 
@@ -210,225 +190,201 @@
     }
 
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      font-family: var(--font-body);
-      background: var(--accent-subtle);
-      color: var(--accent);
-      border-radius: 10px;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: all var(--transition);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2.2rem; font-size: 1rem; font-weight: 500;
+      font-family: var(--font-body); background: var(--accent-subtle);
+      color: var(--accent); border-radius: 10px; text-decoration: none;
+      border: 1px solid var(--border); cursor: pointer; transition: all var(--transition);
     }
 
-    .btn-secondary:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-2px);
-    }
+    .btn-secondary:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
     /* ── Sections ── */
-    section {
-      padding: 6rem 0;
-    }
+    section { padding: 6rem 0; }
 
     .section-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--accent);
-      text-align: center;
-      margin-bottom: 0.75rem;
+      font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--accent); text-align: center; margin-bottom: 0.75rem;
     }
 
     h2 {
-      font-family: var(--font-display);
-      font-size: 2.6rem;
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
+      font-family: var(--font-display); font-size: 2.6rem; font-weight: 500;
+      text-align: center; margin-bottom: 1rem; letter-spacing: -0.02em;
     }
 
     .section-desc {
-      text-align: center;
+      text-align: center; color: var(--text-secondary);
+      max-width: 560px; margin: 0 auto 3.5rem; font-size: 1.05rem;
+    }
+
+    /* ── O que é RPG ── */
+    .rpg-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rpg-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('img/section-bg.jpg') center/cover no-repeat;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    .rpg-section > * { position: relative; z-index: 1; }
+
+    .rpg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .rpg-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .rpg-text p {
       color: var(--text-secondary);
-      max-width: 560px;
-      margin: 0 auto 3.5rem;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .rpg-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .rpg-image img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* ── Feature Cards ── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
     .feature-card {
-      padding: 2rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      backdrop-filter: blur(8px);
-      transition: all var(--transition);
+      padding: 2rem; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      backdrop-filter: blur(8px); transition: all var(--transition);
     }
 
     .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
+      transform: translateY(-4px); box-shadow: var(--shadow);
       border-color: rgba(124, 92, 252, 0.15);
     }
 
     .feature-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent-subtle);
-      border-radius: 10px;
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      background: var(--accent-subtle); border-radius: 10px; font-size: 1.2rem; margin-bottom: 1.2rem;
     }
 
-    .feature-card h3 {
+    .feature-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .feature-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; }
+
+    /* ── Steps ── */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; counter-reset: step; }
+
+    .step { text-align: center; counter-increment: step; }
+
+    .step-number {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--accent-subtle); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem; font-weight: 600; font-size: 1.1rem; color: var(--accent);
+    }
+
+    .step h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .step p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── Sobre o Projeto ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .about-card {
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--accent);
+    }
+
+    .about-card h3 {
       font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 500;
+      font-size: 1.3rem;
       margin-bottom: 0.6rem;
+      color: var(--accent);
     }
 
-    .feature-card p {
+    .about-card p {
       color: var(--text-secondary);
       font-size: 0.92rem;
       line-height: 1.65;
     }
 
-    /* ── Steps ── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      counter-reset: step;
-    }
-
-    .step {
-      text-align: center;
-      counter-increment: step;
-    }
-
-    .step-number {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: var(--accent-subtle);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.2rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: var(--accent);
-    }
-
-    .step h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-
-    .step p {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
     /* ── FAQ ── */
-    .faq-list {
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    .faq-list { max-width: 680px; margin: 0 auto; }
 
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-    }
+    .faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
 
     .faq-item summary {
-      padding: 1.25rem 0;
-      font-weight: 500;
-      font-size: 1.05rem;
-      color: var(--text);
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 1.25rem 0; font-weight: 500; font-size: 1.05rem;
+      color: var(--text); cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
       transition: color 0.2s;
     }
 
-    .faq-item summary:hover {
-      color: var(--accent);
-    }
-
-    .faq-item summary::after {
-      content: '+';
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      transition: transform 0.2s;
-    }
-
-    .faq-item[open] summary::after {
-      transform: rotate(45deg);
-    }
-
-    .faq-item p {
-      padding: 0 0 1.25rem;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
+    .faq-item summary:hover { color: var(--accent); }
+    .faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--text-secondary); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { padding: 0 0 1.25rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
 
     /* ── CTA Final ── */
     .cta-section {
-      text-align: center;
-      padding: 6rem 0;
+      text-align: center; padding: 6rem 0;
       border-top: 1px solid var(--border);
+      position: relative; overflow: hidden;
     }
 
-    .cta-section h2 {
-      margin-bottom: 1.5rem;
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('img/hero-bg.jpg') center/cover no-repeat;
+      opacity: 0.15; z-index: 0;
     }
+
+    [data-theme="light"] .cta-section::before { opacity: 0.06; }
+
+    .cta-section > * { position: relative; z-index: 1; }
+    .cta-section h2 { margin-bottom: 1.5rem; }
 
     /* ── Footer ── */
     footer {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      line-height: 1.8;
-      border-top: 1px solid var(--border);
+      text-align: center; padding: 3rem 1.5rem;
+      color: var(--text-secondary); font-size: 0.85rem;
+      line-height: 1.8; border-top: 1px solid var(--border);
     }
 
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    footer a { color: var(--accent); text-decoration: none; }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .features-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: repeat(2, 1fr); }
+      .rpg-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
@@ -440,7 +396,6 @@
       .hero-actions { flex-direction: column; align-items: center; }
     }
 
-    /* ── Smooth scroll ── */
     html { scroll-behavior: smooth; }
   </style>
 </head>
@@ -464,10 +419,96 @@
     </p>
     <div class="hero-actions">
       <a href="criador.html" class="btn-primary">Criar meu agente →</a>
-      <a href="#como-funciona" class="btn-secondary">Como funciona</a>
+      <a href="#o-que-e-rpg" class="btn-secondary">O que é RPG?</a>
     </div>
   </header>
 
+  <!-- O QUE É RPG -->
+  <section id="o-que-e-rpg" class="rpg-section">
+    <span class="section-label">Para iniciantes</span>
+    <h2>O que é RPG?</h2>
+    <p class="section-desc">Conheça o universo dos jogos de interpretação de papéis antes de criar seu primeiro agente.</p>
+
+    <div class="rpg-grid">
+      <div class="rpg-text">
+        <h3>Role-Playing Game</h3>
+        <p>
+          RPG (Role-Playing Game) é um jogo onde os participantes assumem o papel de personagens fictícios em uma narrativa colaborativa. Um <strong>mestre</strong> conduz a história, enquanto os <strong>jogadores</strong> tomam decisões, resolvem enigmas e enfrentam desafios usando atributos, perícias e dados.
+        </p>
+        <p>
+          Diferente de videogames, o RPG de mesa não tem limites pré-programados — sua imaginação é o motor. As regras existem para dar estrutura e consequência às ações, mas a história é construída por todos na mesa.
+        </p>
+        <p>
+          Os dados (d4, d6, d8, d10, d12, d20) determinam o sucesso ou falha das ações, adicionando imprevisibilidade e emoção a cada momento.
+        </p>
+      </div>
+      <div class="rpg-image">
+        <img src="img/rpg-scene.jpg" alt="Cena de RPG de mesa com fichas, dados e velas" loading="lazy" width="1280" height="720">
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDEM PARANORMAL -->
+  <section>
+    <span class="section-label">O Sistema</span>
+    <h2>Ordem Paranormal</h2>
+    <p class="section-desc">O RPG brasileiro que conquistou milhões de fãs, criado por Cellbit e publicado pela Jambô Editora.</p>
+
+    <div class="rpg-grid">
+      <div class="rpg-text">
+        <h3>Investigação paranormal no Brasil</h3>
+        <p>
+          Em <strong>Ordem Paranormal</strong>, você interpreta um agente da Ordo Realitas, uma organização secreta que investiga e combate ameaças do <strong>Outro Lado</strong> — uma dimensão paralela repleta de criaturas e fenômenos sobrenaturais.
+        </p>
+        <p>
+          O sistema possui quatro classes (Combatente, Especialista, Ocultista e Sobrevivente), cinco atributos (Agilidade, Força, Intelecto, Presença e Vigor), e um sistema único de <strong>Sanidade</strong> que reflete o impacto psicológico do contato com o paranormal.
+        </p>
+        <p>
+          O universo inclui rituais, itens amaldiçoados, elementos paranormais (Sangue, Morte, Energia, Conhecimento e Medo) e uma progressão por NEX (Nível de Exposição Paranormal).
+        </p>
+      </div>
+      <div class="rpg-text">
+        <h3>Por que uma ficha é importante?</h3>
+        <p>
+          A ficha de personagem é o documento central de todo RPG. Ela registra tudo sobre seu agente: origem, classe, atributos, perícias treinadas, poderes, inventário, rituais e itens amaldiçoados.
+        </p>
+        <p>
+          Criar uma ficha manualmente exige consultar tabelas, calcular bônus e anotar regras. Esta ferramenta automatiza todo esse processo, permitindo que você foque no que importa: <strong>a narrativa e a diversão</strong>.
+        </p>
+        <p>
+          Ideal para jogadores iniciantes que querem entrar no universo sem barreiras, e para veteranos que querem testar builds rapidamente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE O PROJETO -->
+  <section>
+    <span class="section-label">Sobre</span>
+    <h2>Sobre o Projeto</h2>
+    <p class="section-desc">Um Trabalho de Conclusão de Curso focado em acessibilidade e comunidade.</p>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>🎓 Projeto de TCC</h3>
+        <p>Desenvolvido como Trabalho de Conclusão de Curso por Luiz Felipe e Pedro Cortez. O objetivo é criar uma ferramenta open-source que facilite a criação de fichas de RPG para a comunidade brasileira.</p>
+      </div>
+      <div class="about-card">
+        <h3>🌐 Open Source</h3>
+        <p>Todo o código é aberto e disponível no GitHub. Qualquer pessoa pode contribuir, sugerir melhorias ou adaptar para outros sistemas de RPG. Acreditamos que a comunidade é o motor do projeto.</p>
+      </div>
+      <div class="about-card">
+        <h3>📱 Acessível</h3>
+        <p>Funciona em qualquer dispositivo com navegador — computador, tablet ou celular. Não precisa instalar nada, criar conta ou pagar. É gratuito e sempre será.</p>
+      </div>
+      <div class="about-card">
+        <h3>🚀 Em Evolução</h3>
+        <p>O projeto está em constante desenvolvimento. Planejamos suporte para outros sistemas como D&D 5e, Call of Cthulhu, e exportação de fichas em PDF e JSON.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
   <section>
     <span class="section-label">Recursos</span>
     <h2>Por que usar esta ferramenta</h2>
@@ -489,9 +530,25 @@
         <h3>Mesas reais</h3>
         <p>Ideal para mestres criando NPCs rapidamente e jogadores testando conceitos antes da sessão.</p>
       </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔮</div>
+        <h3>Rituais e Poderes</h3>
+        <p>Sistema completo de rituais com filtros por círculo e elemento, formas Discente e Verdadeiro, e poderes de origem integrados.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚔️</div>
+        <h3>Inventário inteligente</h3>
+        <p>Controle de carga, categorias por patente, itens do livro e personalizados, com suporte a itens amaldiçoados.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <h3>Tema claro e escuro</h3>
+        <p>Alterne entre tema dark e light com um clique. Sua preferência é salva automaticamente para as próximas visitas.</p>
+      </div>
     </div>
   </section>
 
+  <!-- COMO FUNCIONA -->
   <section id="como-funciona">
     <span class="section-label">Passo a passo</span>
     <h2>Como funciona</h2>
@@ -515,12 +572,13 @@
       </div>
       <div class="step">
         <div class="step-number">4</div>
-        <h3>Ative Poderes</h3>
-        <p>Interface dedicada com ativação, custo e efeitos descritos claramente.</p>
+        <h3>Equipe seu Agente</h3>
+        <p>Adicione inventário, rituais, itens amaldiçoados e ative poderes para completar sua ficha.</p>
       </div>
     </div>
   </section>
 
+  <!-- FAQ -->
   <section>
     <span class="section-label">Dúvidas</span>
     <h2>Perguntas frequentes</h2>
@@ -534,6 +592,14 @@
       <details class="faq-item">
         <summary>Funciona no celular?</summary>
         <p>Sim, o layout é totalmente responsivo. Botões e selects funcionam bem em touch.</p>
+      </details>
+      <details class="faq-item">
+        <summary>O que é NEX?</summary>
+        <p>NEX (Nível de Exposição Paranormal) representa o quão exposto ao Outro Lado seu agente é. Vai de 0% a 99%, influenciando atributos, poderes e habilidades disponíveis. É o equivalente ao "nível" em outros RPGs.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quais são os elementos paranormais?</summary>
+        <p>São cinco: Sangue (vitalidade e corpo), Morte (entropia e decadência), Energia (forças naturais), Conhecimento (mente e psique) e Medo (terror e ilusões). Cada um afeta rituais, itens amaldiçoados e criaturas.</p>
       </details>
       <details class="faq-item">
         <summary>Posso salvar ou exportar a ficha?</summary>
@@ -574,12 +640,9 @@
     localStorage.setItem('theme', next);
   }
 
-  // Load saved theme
   (function() {
     const saved = localStorage.getItem('theme');
-    if (saved) {
-      document.documentElement.setAttribute('data-theme', saved);
-    }
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
   })();
 </script>
 
