@@ -1,136 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Agente - Laboratório de Fichas</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Movimento de Saída -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #0b0c12;
-            --text: #e9e9f2;
-            --text-soft: #a9a9c5;
-            --accent: #8b5cff;
-            --accent-dark: #5a3ab8;
-            --accent-soft: #b08fff;
-            --glass: rgba(18, 16, 38, 0.65);
-            --border: rgba(139, 92, 255, 0.18);
-            --glow: rgba(139, 92, 255, 0.25);
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', system-ui, sans-serif;
-            line-height: 1.68;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .bg-image {
-            position: fixed;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
-            filter: brightness(0.35) contrast(1.15) saturate(0.75);
-            z-index: -2;
-        }
-
-        .bg-overlay {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(11,12,18,0.78) 0%, rgba(11,12,18,0.92) 70%, rgba(11,12,18,1) 100%);
-            z-index: -1;
-        }
-
-        header {
-            background: rgba(11, 12, 18, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 1.2rem 0;
-        }
-
-        main {
-            position: relative;
-            z-index: 1;
-            padding: 2rem 1rem;
-            max-width: 1180px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 10px 40px var(--glow);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: var(--accent-soft);
-            box-shadow: 0 15px 50px rgba(139, 92, 255, 0.25);
-        }
-
-        .card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.1rem;
-            color: var(--accent-soft);
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.8rem;
-        }
-
-        button, .btn-confirmar, .btn-alterar, .btn-ativar-poder {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 0.85rem 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px var(--glow);
-        }
-
-        button:hover, .btn-confirmar:hover, .btn-alterar:hover, .btn-ativar-poder:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(139, 92, 255, 0.4);
-        }
-
-        input, select {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid var(--border);
-            color: white;
-            border-radius: 8px;
-        }
-
-        .status-linha, .grid-atributos, .classes-opcoes {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 1rem;
-        }
-
-        .poder-card {
-            background: var(--glass);
-            border-left: 5px solid var(--accent);
-        }
-
-        /* Mantém todos os estilos antigos que você já tinha */
-        /* (não removi nada, só adicionei o tema novo por cima) */
-    </style>
-
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header><h1>Laboratório de Fichas e Perfis de Combate</h1></header>
+<nav class="criador-nav">
+    <a href="index.html" class="nav-logo">← Laboratório de Fichas</a>
+    <div class="nav-actions">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+    </div>
+</nav>
+
+<div class="criador-title-bar">
+    <h1>Novo Agente</h1>
+    <p>Ordem Paranormal — Criador de Fichas</p>
+</div>
 
 <main>
 
