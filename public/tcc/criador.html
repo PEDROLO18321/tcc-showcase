@@ -303,6 +303,27 @@
             </div>
         </div>
 
+        <!-- Filtros do inventário -->
+        <div class="rituais-filtros" style="margin-bottom:12px;">
+            <div class="filtro-grupo">
+                <span class="filtro-label">Tipo:</span>
+                <button class="filtro-tipo-btn filtro-elemento-btn active" data-tipo="todos" onclick="filtrarInventarioPorTipo('todos')">Todos</button>
+                <button class="filtro-tipo-btn filtro-elemento-btn" data-tipo="armas" onclick="filtrarInventarioPorTipo('armas')">🔪 Armas</button>
+                <button class="filtro-tipo-btn filtro-elemento-btn" data-tipo="protecoes" onclick="filtrarInventarioPorTipo('protecoes')">🛡️ Proteções</button>
+                <button class="filtro-tipo-btn filtro-elemento-btn" data-tipo="equipamentosGerais" onclick="filtrarInventarioPorTipo('equipamentosGerais')">🛠️ Equipamentos</button>
+                <button class="filtro-tipo-btn filtro-elemento-btn" data-tipo="itensParanormais" onclick="filtrarInventarioPorTipo('itensParanormais')">🌌 Paranormais</button>
+            </div>
+            <div class="filtro-grupo">
+                <span class="filtro-label">Categoria:</span>
+                <button class="filtro-cat-btn filtro-circulo-btn active" data-cat="todos" onclick="filtrarInventarioPorCategoria('todos')">Todos</button>
+                <button class="filtro-cat-btn filtro-circulo-btn" data-cat="0" onclick="filtrarInventarioPorCategoria('0')">0</button>
+                <button class="filtro-cat-btn filtro-circulo-btn" data-cat="I" onclick="filtrarInventarioPorCategoria('I')">I</button>
+                <button class="filtro-cat-btn filtro-circulo-btn" data-cat="II" onclick="filtrarInventarioPorCategoria('II')">II</button>
+                <button class="filtro-cat-btn filtro-circulo-btn" data-cat="III" onclick="filtrarInventarioPorCategoria('III')">III</button>
+                <button class="filtro-cat-btn filtro-circulo-btn" data-cat="IV" onclick="filtrarInventarioPorCategoria('IV')">IV</button>
+            </div>
+        </div>
+
         <!-- Dois botões lado a lado -->
         <div style="display:flex; gap:12px; margin:20px 0;">
             <button onclick="abrirModalAdicionarItens()" class="btn-adicionar-itens" style="flex:1;">
@@ -313,9 +334,9 @@
             </button>
         </div>
 
-        <!-- LISTA DE ITENS DO INVENTÁRIO (ESSA PARTE ESTAVA FALTANDO!) -->
+        <!-- LISTA DE ITENS DO INVENTÁRIO -->
         <h3 style="margin: 30px 0 16px; font-size: 1.4rem;">Itens no seu inventário</h3>
-        <div id="inventario-atual-lista" class="inventario-lista"></div>
+        <div id="inventario-atual-lista" class="inventario-lista" style="max-height:none;"></div>
 
         <!-- Botões de ação -->
         <div class="inventario-rodape" style="margin-top: 30px; display:flex; gap:12px; flex-wrap:wrap;">
