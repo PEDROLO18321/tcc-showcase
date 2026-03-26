@@ -130,6 +130,37 @@ function atualizarDisplayPontosNex(nex, classe) {
 }
 
 /* =========================
+   CÁLCULO DE DEFESA
+========================= */
+
+function calcularDefesaEquipamento() {
+    if (typeof inventarioAtual === 'undefined') return 0;
+    let bonus = 0;
+    inventarioAtual.forEach(item => {
+        if (item.defesa) {
+            const val = parseInt(String(item.defesa).replace('+', '')) || 0;
+            bonus += val;
+        }
+    });
+    return bonus;
+}
+
+function atualizarDefesa() {
+    const defesaInput = document.getElementById("defesa_total");
+    const detalheEl = document.getElementById("defesa-detalhe");
+    if (!defesaInput) return;
+
+    const agi = Number(document.getElementById("agilidade")?.value) || 0;
+    const equipBonus = calcularDefesaEquipamento();
+    const total = 10 + agi + equipBonus;
+
+    defesaInput.value = total;
+    if (detalheEl) {
+        detalheEl.textContent = `(10 base + ${agi} AGI` + (equipBonus > 0 ? ` + ${equipBonus} equip.` : '') + `)`;
+    }
+}
+
+/* =========================
    FUNÇÃO ATUALIZAR TUDO
 ========================= */
 
