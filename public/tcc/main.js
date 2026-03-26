@@ -155,6 +155,9 @@ function atualizarTudo() {
         }
     }
 
+    // === Calcular Defesa: 10 + AGI + bônus de proteções equipadas ===
+    atualizarDefesa();
+
     if (typeof atualizarSecaoPoderes === 'function') {
         atualizarSecaoPoderes();
     }
