@@ -371,6 +371,7 @@ function atualizarInventario() {
     document.getElementById("carga-atual").textContent = calcularEspacosUsados();
     
     renderizarInventario();
+    atualizarDefesa(); // Recalcula defesa ao mudar inventário
 }
 
 function calcularEspacosUsados() {
