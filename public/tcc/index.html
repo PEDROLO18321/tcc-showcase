@@ -400,14 +400,7 @@
       position: relative; overflow: hidden;
     }
 
-    .cta-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url('img/hero-bg.jpg') center/cover no-repeat;
-      opacity: 0.15; z-index: 0;
-    }
-
-    [data-theme="light"] .cta-section::before { opacity: 0.06; }
+    .cta-section > * { position: relative; z-index: 1; }
 
     .cta-section > * { position: relative; z-index: 1; }
     .cta-section h2 { margin-bottom: 1.5rem; }
