@@ -264,10 +264,12 @@
     <div class="status-linha"><span>Determinação</span><input id="determinacao_atual"><span>/</span><input id="determinacao_max" readonly></div>
     
     <hr style="margin: 1rem 0; border-color: var(--border);">
-    <div class="status-linha">
-        <span>🛡️ Defesa</span>
-        <input id="defesa_total" readonly style="font-weight: bold; text-align: center;">
-        <small id="defesa-detalhe" style="color: var(--text-secondary); font-size: 0.8rem;"></small>
+    <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+        <div class="status-linha">
+            <span>Defesa</span>
+            <input id="defesa_total" readonly style="font-weight: bold; text-align: center;">
+        </div>
+        <small id="defesa-detalhe" style="color: var(--text-secondary); font-size: 0.8rem; padding-left: 0.5rem;"></small>
     </div>
     </section>
 
