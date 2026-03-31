@@ -55,6 +55,29 @@
       line-height: 1.7;
       min-height: 100vh;
       transition: background var(--transition), color var(--transition);
+      position: relative;
+    }
+
+    /* ── Background global com imagens desfocadas ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(rgba(10, 10, 15, 0.55), rgba(10, 10, 15, 0.55)),
+        url('img/hero-bg.jpg') center/cover no-repeat;
+      filter: blur(8px);
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+
+    [data-theme="light"] body::before {
+      background:
+        linear-gradient(rgba(246, 245, 242, 0.65), rgba(246, 245, 242, 0.65)),
+        url('img/hero-bg.jpg') center/cover no-repeat;
+      filter: blur(8px);
+      transform: scale(1.05);
     }
 
     /* ── Navigation ── */
@@ -131,17 +154,6 @@
       position: relative;
       overflow: hidden;
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('img/hero-bg.jpg') center/cover no-repeat;
-      opacity: 0.25;
-      z-index: 0;
-    }
-
-    [data-theme="light"] .hero::before { opacity: 0.1; }
 
     .hero > * { position: relative; z-index: 1; }
 
@@ -221,15 +233,6 @@
     .rpg-section {
       position: relative;
       overflow: hidden;
-    }
-
-    .rpg-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('img/section-bg.jpg') center/cover no-repeat;
-      opacity: 0.08;
-      z-index: 0;
     }
 
     .rpg-section > * { position: relative; z-index: 1; }
@@ -397,14 +400,7 @@
       position: relative; overflow: hidden;
     }
 
-    .cta-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url('img/hero-bg.jpg') center/cover no-repeat;
-      opacity: 0.15; z-index: 0;
-    }
-
-    [data-theme="light"] .cta-section::before { opacity: 0.06; }
+    .cta-section > * { position: relative; z-index: 1; }
 
     .cta-section > * { position: relative; z-index: 1; }
     .cta-section h2 { margin-bottom: 1.5rem; }
