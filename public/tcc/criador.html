@@ -593,8 +593,30 @@
         </div>
     </div>
 
+    <!-- ====================== MODAL FICHAS DB ====================== -->
+    <div id="modal-fichas-db" class="modal-overlay">
+        <div class="modal-content" style="max-width:650px;">
+            <div class="modal-header">
+                <h3>Gerenciador de Fichas</h3>
+                <button onclick="fecharModalFichasDB()" class="btn-fechar-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="lista-fichas-db"></div>
+            </div>
+            <div class="modal-footer" style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button onclick="importarFichaArquivo()" class="btn-db">📥 Importar JSON</button>
+                <button onclick="importarBackupDB()" class="btn-db">📦 Restaurar Backup</button>
+                <button onclick="fecharModalFichasDB()" class="btn-cancelar">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campo oculto para nome do personagem -->
+    <input type="hidden" id="nome-personagem" value="Sem Nome">
+
 </main>
 
+<script src="https://sql.js.org/dist/sql-wasm.js"></script>
 <script src="theme.js"></script>
 <script src="origens.js"></script>
 <script src="origens-ui.js"></script>
