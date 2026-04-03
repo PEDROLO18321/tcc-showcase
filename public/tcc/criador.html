@@ -350,8 +350,11 @@
         <!-- Botões de ação -->
         <div class="inventario-rodape" style="margin-top: 30px; display:flex; gap:12px; flex-wrap:wrap;">
             <button onclick="limparInventario()" class="btn-danger">🗑️ Limpar tudo</button>
-            <button onclick="salvarFichaCompleta()">💾 Salvar ficha completa</button>
-            <button onclick="carregarFichaSalva()">📂 Carregar ficha salva</button>
+            <button onclick="salvarFichaDB()" id="btn-salvar-ficha">💾 Salvar Ficha</button>
+            <button onclick="abrirModalCarregarFicha()" id="btn-carregar-ficha">📂 Carregar Ficha</button>
+            <button onclick="importarFichaArquivo()">📥 Importar JSON</button>
+            <button onclick="exportarBackupDB()">💾 Backup Completo</button>
+            <button onclick="mostrarInfoBanco()">📊 Info do Banco</button>
         </div>
     </section>
 
