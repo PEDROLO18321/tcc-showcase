@@ -221,15 +221,17 @@ function formatarDataDB(iso) {
 // ====================== INICIALIZAÇÃO ======================
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Substitui salvar/carregar antigos
     const btnSalvar = document.getElementById("btn-salvar-ficha");
     const btnCarregar = document.getElementById("btn-carregar-ficha");
 
-    if (btnSalvar) {
-        btnSalvar.onclick = salvarFichaDB;
-    }
-    if (btnCarregar) {
-        btnCarregar.onclick = abrirModalCarregarFicha;
+    if (btnSalvar) btnSalvar.onclick = salvarFichaDB;
+    if (btnCarregar) btnCarregar.onclick = abrirModalCarregarFicha;
+
+    // Auto-abrir gerenciador se veio da index com ?gerenciar=1
+    if (new URLSearchParams(window.location.search).get("gerenciar") === "1") {
+        window.addEventListener('db-ready', () => {
+            setTimeout(abrirModalCarregarFicha, 300);
+        });
     }
 });
 

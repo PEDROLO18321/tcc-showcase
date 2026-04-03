@@ -2228,6 +2228,31 @@ input[type="radio"]:not([name="classe"]) {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
+/* Nav buttons - Fichas e Salvar */
+.nav-btn-fichas, .nav-btn-salvar {
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+.nav-btn-fichas:hover, .nav-btn-salvar:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.nav-btn-salvar {
+  border-color: var(--green);
+  color: var(--green);
+}
+.nav-btn-salvar:hover {
+  background: var(--green);
+  color: #000;
+}
+
 /* ══════════════════════════════════════════════════════
    DATABASE UI — Gerenciador de Fichas
    ══════════════════════════════════════════════════════ */
