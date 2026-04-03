@@ -632,6 +632,18 @@
 <script src="rituais-data.js"></script>
 <script src="rituais-ui.js"></script>
 <script src="itens-amaldicoados-ui.js"></script>
+<script src="database.js"></script>
+<script src="database-ui.js"></script>
+<script>
+    // Inicializa o banco de dados quando a página carregar
+    document.addEventListener('DOMContentLoaded', function() {
+        inicializarBancoDeDados().then(() => {
+            console.log("🗄️ Banco de dados pronto!");
+        }).catch(err => {
+            console.warn("⚠️ Banco indisponível, usando fallback localStorage:", err);
+        });
+    });
+</script>
 
 </body>
 </html>
